@@ -3,14 +3,15 @@ package ru.netology.testing.services;
 public class VacationCalculateService {
     public int calcCount(int income, int expenses) {
         int count = 0; // счётчик месяцев отдыха
-        int threshold = 0; // количество денег на счету
-        for (int i = 0; i < 12; i++) {
+        int treshold = 0;// количество денег на счету
+        for (int month = 1; month < 12; month++) {
 
-            if (threshold >= expenses) { // можем ли отдыхать? //20000
+            if (treshold >= 150000) { // можем ли отдыхать? //20000
                 count++;// увеличиваем счётчик месяцев отдыха
-                threshold = threshold - expenses;
+                treshold = treshold - expenses;
+                treshold = treshold / 3;
             } else {
-                threshold = threshold + income;
+                treshold = treshold + income - expenses;
             }
         }
         return count;
